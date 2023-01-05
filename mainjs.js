@@ -95,3 +95,29 @@ for (let i = 1; i < 100; i++) {
    // if文の実行分が１行の時は｛｝は省略できる
 }
 
+// 数字当てゲーム
+// let maxnum = parseInt(prompt('数字当てゲームーmax数字を決めて'));
+// //文字列の入力には再度prompt NaNはfalthyなので!でtrueにする
+// while (!maxnum || maxnum < 0) {
+//  maxnum = parseInt(prompt('整数の自然数をいれて'));
+// }
+
+// const randomNum = Math.floor(Math.random() * maxnum )+ 1
+// console.log(randomNum);
+
+// let answer = parseInt(prompt('CPが数字を決めました、予想してください'))
+// let answerCount = 1;
+// while (parseInt(answer) !== randomNum) {
+//   if (answer === 'z') break;
+//   answerCount++;
+//   if (answer > randomNum) {
+//     answer = prompt('もっと小さい zでエスケープ');
+//   } else {
+//     answer = prompt('もっと大きい zでエスケープ');
+//   }
+// }
+// if (answer === 'z'){
+//   console.log('ゲームを終了します')
+// } else {
+//   console.log(`${answerCount}回で正解`)
+// }

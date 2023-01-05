@@ -105,7 +105,7 @@ for (let i = 1; i < 100; i++) {
 // const randomNum = Math.floor(Math.random() * maxnum )+ 1
 // console.log(randomNum);
 
-// let answer = parseInt(prompt('CPが数字を決めました、予想してください'))
+// let answer = prompt('CPが数字を決めました、予想してください')
 // let answerCount = 1;
 // while (parseInt(answer) !== randomNum) {
 //   if (answer === 'z') break;

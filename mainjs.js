@@ -5,8 +5,6 @@ console.log('配列')
 const roomNumber = [201, 202, 203];
 console.log(roomNumber[2]);
 
-
-
 // オブジェクト
 console.log('オブジェクト')
 let num = {red:1, 1999:2, 2022:'new'};;
@@ -105,7 +103,7 @@ for (let i = 1; i < 100; i++) {
 // const randomNum = Math.floor(Math.random() * maxnum )+ 1
 // console.log(randomNum);
 
-// let answer = parseInt(prompt('CPが数字を決めました、予想してください'))
+// let answer = prompt('CPが数字を決めました、予想してください')
 // let answerCount = 1;
 // while (parseInt(answer) !== randomNum) {
 //   if (answer === 'z') break;
@@ -120,4 +118,35 @@ for (let i = 1; i < 100; i++) {
 //   console.log('ゲームを終了します')
 // } else {
 //   console.log(`${answerCount}回で正解`)
+// }
+
+console.log('for of 文') 
+// for (変数 of 列挙可能なオブジェクト){
+//   処理内容
+// }
+// 列挙可能なオブジェクトを順番に変数にいれていくイメージ
+// const morning = ['譜久村','生田', '石田','小田','野中', '牧野', '横山']
+for (mmember of morning) {
+  console.log(mmember)
+}
+// const jj = [
+//   ['宮崎', '金澤', '宮本', '植村'],
+//   ['段原', '稲場'],
+//   ['工藤', '松永'],
+//   ['井上'],
+//   ['有澤', '入江', '江端']
+for (jjclass of jj){
+  for (jjmember of jjclass) {
+    console.log(jjmember)
+  }
+}
+
+let leaders = {morning:'譜久村', アンジュルム:'竹内', jj:'植村', つばき:'山岸', beyo:'一岡', ocha:'斎藤'}
+console.log(leaders)
+for (group of Object.keys(leaders)) {
+  console.log(`${group}のリーダーは${leaders[group]}`);
+}
+// 下の for in も同じように使える
+// for (group in leaders) {
+//   console.log(`${group}は${leaders[group]}`)
 // }

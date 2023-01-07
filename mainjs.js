@@ -1,5 +1,6 @@
 
 console.log('メソッド')
+// stringのメソッド
 // thing.method();
 // 変数や文字列の後に.メソッド（）の順
 console.log('string'.length) 
@@ -13,6 +14,12 @@ console.log(slimhello)
 console.log('メソッドの引数')
 // thing.method(arg); 引数をいれて動かすメソッドもある
 console.log(hello.indexOf('p'));// 6
+//slice(とり始めindex数, 終了index数)
+//index の-は後ろからの数
+console.log(hello.slice(6, 9));// pro
+console.log(hello.slice(-7));// project
+console.log(hello.slice(-7, -2));// proje
+console.log(hello.replace('project', 'morning'))// hello morning
 
 
 // 配列

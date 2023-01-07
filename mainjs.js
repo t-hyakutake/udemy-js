@@ -1,4 +1,19 @@
 
+console.log('メソッド')
+// thing.method();
+// 変数や文字列の後に.メソッド（）の順
+console.log('string'.length) 
+// 'string'.length これはプロパティの参照。
+let hello = 'hello project';
+console.log(hello.toUpperCase());
+let spacehello = '  hello! project  ';
+let slimhello = spacehello.trim().toUpperCase();// メソッドは続けて複数書くことができる
+console.log(slimhello)
+
+console.log('メソッドの引数')
+// thing.method(arg); 引数をいれて動かすメソッドもある
+console.log(hello.indexOf('p'));// 6
+
 
 // 配列
 console.log('配列')
@@ -144,7 +159,7 @@ for (jjclass of jj){
 let leaders = {morning:'譜久村', アンジュルム:'竹内', jj:'植村', つばき:'山岸', beyo:'一岡', ocha:'斎藤'}
 console.log(leaders)
 for (group of Object.keys(leaders)) {
-  console.log(`${group}のリーダーは${leaders[group]}`);
+  console.log(`${group}リーダーは${leaders[group]}`);
 }
 // 下の for in も同じように使える
 // for (group in leaders) {

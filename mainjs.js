@@ -14,13 +14,54 @@ console.log(slimhello)
 console.log('メソッドの引数')
 // thing.method(arg); 引数をいれて動かすメソッドもある
 console.log(hello.indexOf('p'));// 6
-//slice(とり始めindex数, 終了index数)
+//slice(とり始めindex数, [終了index数])
 //index の-は後ろからの数
 console.log(hello.slice(6, 9));// pro
 console.log(hello.slice(-7));// project
 console.log(hello.slice(-7, -2));// proje
 console.log(hello.replace('project', 'morning'))// hello morning
+// replaceは置き換える
 
+console.log('条件分岐')
+//if文
+// if (条件文true か faulth) { trueで実行分 } else if ( ) { } else { }
+let score = 92
+if ( score > 90) {
+  console.log('great');
+} else if (score > 70){
+  console.log('good');
+} else {
+  console.log('you\'re fire')
+}
+
+//ifのネスト
+if ( score > 90) {
+  if (score % 2 === 0){
+    console.log('great&偶数')
+  } else {
+    console.log('great&奇数')
+  }
+} else {
+  console.log('other')
+}
+
+//truthy falsy
+//falthy とは false 0 ''stringなし null undefined Nan （空白入力はfalsyではない）truthyはそれ以外
+if (0) {
+  console.log('true')
+} else {
+  console.log('false')
+}
+// if () {
+//   console.log('true')
+// } else {
+//   console.log('false')
+// } これはエラー
+if (null) {
+  console.log('true')
+} else {
+  console.log('false')
+}
 
 // 配列
 console.log('配列')

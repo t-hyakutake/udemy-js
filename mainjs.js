@@ -46,7 +46,8 @@ if ( score > 90) {
 }
 
 //truthy falsy
-//falthy とは false 0 ''stringなし null undefined Nan （空白入力はfalsyではない）truthyはそれ以外
+//falthy とは false 0 ''stringなし null undefined Nan 
+//（空白入力はfalsyではない）truthyはそれ以外
 if (0) {
   console.log('true')
 } else {
@@ -56,11 +57,50 @@ if (0) {
 //   console.log('true')
 // } else {
 //   console.log('false')
-// } これはエラー
+// } これはエラーでfalseとはならない
 if (null) {
   console.log('true')
 } else {
   console.log('false')
+}
+
+console.log('論理演算')
+//&&and, ||or, !not
+if (score > 90 && score % 2 === 0){
+  console.log('９０以上かつ偶数')
+} else {
+  console.log('以外')
+}
+
+if (score > 90 && score % 2 !== 0){
+  console.log('９０以上かつ偶数')
+} else {
+  console.log('以外')
+}
+// let userinpt = prompt('入力ください');
+// if (!userinpt) {
+//   prompt('なにか入力ください')
+// }
+//falsyな空入力をnot!でtrueにしている
+
+console.log('switch文')
+{
+  let month = prompt('１２までの月を入力ください')
+  switch (month){
+    case '1':
+      window.alert('１月');
+      break;
+    case '2':
+      alert('２月')
+      break;
+    case '3':
+    case '4':
+    case '5':
+      alert('３～５月')
+      break;
+    default:
+      alert('６月以降')
+  }
 }
 
 // 配列
@@ -133,7 +173,6 @@ console.log('whileループ')
 // 条件式がtrueの時実行される
 // }
 // 条件式がfalthの時抜ける。無限ループしやすいので注意
-// {
 
 //   const pass = '0723';
 //   let guess = prompt('please pass');

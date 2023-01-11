@@ -1,17 +1,17 @@
 
-console.log('メソッド')
+console.log('メソッド');
 // stringのメソッド
 // thing.method();
 // 変数や文字列の後に.メソッド（）の順
-console.log('string'.length) 
+console.log('string'.length); 
 // 'string'.length これはプロパティの参照。
 let hello = 'hello project';
 console.log(hello.toUpperCase());
 let spacehello = '  hello! project  ';
-let slimhello = spacehello.trim().toUpperCase();// メソッドは続けて複数書くことができる
-console.log(slimhello)
+let slimhello = spacehello.trim().toUpperCase();// メソッドは続けて複数書ける
+console.log(slimhello);
 
-console.log('メソッドの引数')
+console.log('メソッドの引数');
 // thing.method(arg); 引数をいれて動かすメソッドもある
 console.log(hello.indexOf('p'));// 6
 //slice(とり始めindex数, [終了index数])
@@ -19,20 +19,20 @@ console.log(hello.indexOf('p'));// 6
 console.log(hello.slice(6, 9));// pro
 console.log(hello.slice(-7));// project
 console.log(hello.slice(-7, -2));// proje
-console.log(hello.replace('project', 'morning'))// hello morning
+console.log(hello.replace('project', 'morning')); // hello morning
 // replaceは置き換える
 
-console.log('条件分岐')
-console.log('if文')
+console.log('条件分岐');
+console.log('if文');
 // if (条件文true か faulth) { trueで実行分 } else if ( ) { } else { }
-let score = 92
+let score = 92;
 if ( score > 90) {
   console.log('great');
 } else if (score > 70){
   console.log('good');
 } else {
   console.log('you\'re fire')
-}
+}; //great
 
 //ifのネスト
 if ( score > 90) {
@@ -111,6 +111,7 @@ console.log('配列')
   console.log(row[0]); //true
   console.log(row[2]); //文字列
   console.log(row[4]); //undefined
+  console.log(row[2][1]); // 字
   row[1] = 48; //配列の中身は変更できる
   console.log(row[1]);//48
   console.log('push,pop,unshift,shift');
@@ -126,11 +127,21 @@ const roomNumber = [201, 202, 203];
 console.log(roomNumber[2]);
 {
   console.log('配列のメソッド')
-  let inaguralClass = ['中澤', '飯田', '安倍']
-  let secondClass =['安田', '市井', '矢口']
+  //concat();
+  let inaguralClass = ['中澤', '飯田', '安倍'];
+  let secondClass =['保田', '市井', '矢口'];
   let morning = inaguralClass.concat(secondClass); //配列を結合して新しい配列を作る
   console.log(morning);
-  morning.includes('後藤'); //
+  console.log(morning.includes('安倍')) ; // true
+  console.log(morning.indexOf('飯田')) ; // 1
+  console.log(morning.slice(1,4)) //['飯田', '安倍', '保田']
+  //slice(開始index,終了index);
+  console.log(inaguralClass.splice(1, 2, '石黒')); 
+  //spliceは配列自体を変更する
+  // splice(削除開始index, 削除する数, 追加)
+  console.log(inaguralClass);//['石黒', '中澤']
+  console.log(morning.reverse()); // 配列自体を変更する、逆順になる
+
 }
 
 // オブジェクト

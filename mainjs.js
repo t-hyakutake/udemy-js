@@ -23,7 +23,7 @@ console.log(hello.replace('project', 'morning'))// hello morning
 // replaceは置き換える
 
 console.log('条件分岐')
-//if文
+console.log('if文')
 // if (条件文true か faulth) { trueで実行分 } else if ( ) { } else { }
 let score = 92
 if ( score > 90) {
@@ -85,26 +85,43 @@ if (score > 90 && score % 2 !== 0){
 
 console.log('switch文')
 {
-  let month = prompt('１２までの月を入力ください')
-  switch (month){
-    case '1':
-      window.alert('１月');
-      break;
-    case '2':
-      alert('２月')
-      break;
-    case '3':
-    case '4':
-    case '5':
-      alert('３～５月')
-      break;
-    default:
-      alert('６月以降')
-  }
+  // let month = prompt('switch文を処理します１２までの数字を入力ください。')
+  // switch (month){
+  //   case '1':
+  //     window.alert('１月');
+  //     break;
+  //   case '2':
+  //     alert('２月')
+  //     break;
+  //   case '3':
+  //   case '4':
+  //   case '5':
+  //     alert('３～５月')
+  //     break;
+  //   default:
+  //     alert('６月以降')
+  // }
 }
 
 // 配列
 console.log('配列')
+{
+  let row = [true, 23, '文字列', null];
+  console.log(row); //true, 23, '文字列', null
+  console.log(row[0]); //true
+  console.log(row[2]); //文字列
+  console.log(row[4]); //undefined
+  row[1] = 48; //配列の中身は変更できる
+  console.log(row[1]);//48
+  console.log('push,pop,unshift,shift');
+  row.pop(); //最期を削除(nullを削除)
+  row.push(12);//最期に追加
+  row.shift(); //最初を削除
+  row.unshift(null); //最初にnullを追加
+  console.log(row); //null, 48, '文字列', 12
+}
+
+
 const roomNumber = [201, 202, 203];
 console.log(roomNumber[2]);
 {
@@ -182,6 +199,7 @@ console.log('whileループ')
 // }
 // 条件式がfalthの時抜ける。無限ループしやすいので注意
 
+// passとguessが一致しないと、whileで繰り返す
 //   const pass = '0723';
 //   let guess = prompt('please pass');
 //   while (guess !== pass){

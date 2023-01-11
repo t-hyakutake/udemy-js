@@ -107,6 +107,14 @@ console.log('switch文')
 console.log('配列')
 const roomNumber = [201, 202, 203];
 console.log(roomNumber[2]);
+{
+  console.log('配列のメソッド')
+  let inaguralClass = ['中澤', '飯田', '安倍']
+  let secondClass =['安田', '市井', '矢口']
+  let morning = inaguralClass.concat(secondClass); //配列を結合して新しい配列を作る
+  console.log(morning);
+  morning.includes('後藤'); //
+}
 
 // オブジェクト
 console.log('オブジェクト')

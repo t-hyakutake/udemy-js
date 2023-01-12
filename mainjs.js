@@ -168,7 +168,7 @@ console.log('オブジェクト')
 let num = {red:1, 1999:2, 2022:'new'};
 console.log(num)
 // 値を取得する方法は２パターンある
-// 変数.key か 変数[]
+// 変数.key か 変数['key']
 // console.log(num.red)
 console.log(num.red) // 1
 // console.log(num.'red') // エラー
@@ -187,6 +187,8 @@ num[1999] = 5;
   console.log(signal.currentSignal);
    //エラーにはならないがだめ。（これは'currentSignal'というkeyを探すのでundefined）
   console.log(signal[currentSignal]); //stop
+  console.log(signal['red'] + signal['blue']) //stopgo
+  
 }
 
 // ループ

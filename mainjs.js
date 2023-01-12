@@ -141,7 +141,14 @@ console.log(roomNumber[2]);
   // splice(削除開始index, 削除する数, 追加)
   console.log(inaguralClass);//['石黒', '中澤']
   console.log(morning.reverse()); // 配列自体を変更する、逆順になる
-
+}
+console.log('配列の等価性');
+console.log([1, 2, 3] === [1, 2, 3]); // false
+{
+  let num = [1, 2, 3]
+  numCopy = num 
+  console.log(num === numCopy); // true
+  //配列では配列の中身をみているのではなくて、配列の保存先を検証している
 }
 
 // オブジェクト

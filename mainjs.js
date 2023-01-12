@@ -145,11 +145,23 @@ console.log(roomNumber[2]);
 console.log('配列の等価性');
 console.log([1, 2, 3] === [1, 2, 3]); // false
 {
-  let num = [1, 2, 3]
-  numCopy = num 
+  let num = [1, 2, 3];
+  numCopy = num;
   console.log(num === numCopy); // true
   //配列では配列の中身をみているのではなくて、配列の保存先を検証している
 }
+console.log('配列の変更const');
+{
+  const colors = ['red', 'yellow',];
+  colors.push('blue');
+  console.log(colors); // ['red', 'yellow', 'blue']
+  //中身の変更はできる
+  // colors = ['green', 'gray'];
+  //これは再定義してメモリの場所を変更する事になるのでエラー
+  let newColors = ['red', 'blue'];
+  console.log(newColors = ['gray', 'blue']); // もちろんletなら可能
+}
+console.log('多次元の配列（配列のネスト）')
 
 // オブジェクト
 console.log('オブジェクト')

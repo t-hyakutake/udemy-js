@@ -165,19 +165,29 @@ console.log('多次元の配列（配列のネスト）')
 
 // オブジェクト
 console.log('オブジェクト')
-let num = {red:1, 1999:2, 2022:'new'};;
+let num = {red:1, 1999:2, 2022:'new'};
+console.log(num)
 // 値を取得する方法は２パターンある
 // 変数.key か 変数[]
 // console.log(num.red)
-// keyがnumberの時は''でstringにしてとる
-num['1999'] = 5
-// num.red = 3
-num.blue = true
-console.log(num)
-console.log(num.red)
-console.log(num['2022'])
-// num.red = 'old'
-// num.2022 = 'old'
+console.log(num.red) // 1
+// console.log(num.'red') // エラー
+console.log(num['red']); // 1
+num['blue'] = true;
+// num.2022 //これはエラーになる
+console.log(num['2022']); // 'new'
+// keyはstringに変換される
+num[1999] = 5;
+//''無しでも可能だが、これはナンバーの1999をstringに変換してアクセスしている
+{
+  console.log('オブジェクトの変数でのアクセス方法')
+  const signal = {red:'stop', yellow:'caution', blue:'go'}
+  // 変数になっているkeyでアクセスする
+  const currentSignal = 'red'
+  console.log(signal.currentSignal);
+   //エラーにはならないがだめ。（これは'currentSignal'というkeyを探すのでundefined）
+  console.log(signal[currentSignal]); //stop
+}
 
 // ループ
 console.log('ループ for文');

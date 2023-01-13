@@ -165,34 +165,42 @@ console.log('多次元の配列（配列のネスト）')
 
 // オブジェクト
 console.log('オブジェクト')
-let num = {red:1, 1999:2, 2022:'new'};;
-// 値を取得する方法は２パターンある
-// 変数.key か 変数[]
-// console.log(num.red)
-// keyがnumberの時は''でstringにしてとる
-num['1999'] = 5
-// num.red = 3
-num.blue = true
+let num = {red:1, 1999:2, 2022:'new'};
 console.log(num)
-console.log(num.red)
-console.log(num['2022'])
-// num.red = 'old'
-// num.2022 = 'old'
+// 値を取得する方法は２パターンある
+// 変数.key か 変数['key']
+// console.log(num.red)
+console.log(num.red) // 1
+// console.log(num.'red') // エラー
+console.log(num['red']); // 1
+num['blue'] = true;
+// num.2022 //これはエラーになる
+console.log(num['2022']); // 'new'
+// keyはstringに変換される
+num[1999] = 5;
+//''無しでも可能だが、これはナンバーの1999をstringに変換してアクセスしている
+{
+  console.log('オブジェクトの変数でのアクセス方法')
+  const signal = {red:'stop', yellow:'caution', blue:'go'}
+  // 変数になっているkeyでアクセスする
+  const currentSignal = 'red'
+  console.log(signal.currentSignal);
+   //エラーにはならないがだめ。（これは'currentSignal'というkeyを探すのでundefined）
+  console.log(signal[currentSignal]); //stop
+  console.log(signal['red'] + signal['blue']) //stopgo
+  
+}
 
 // ループ
 console.log('ループ for文');
-// for (
-//   [初期化];
-//   [条件式]; trueの時に実行分を実行する
-//   [増減式]
-// ){実行文}
+// for (初期化; 条件式trueの時に実行する; 増減式) {実行文}
 for (let i = 2; i <= 5; i++){
   console.log(i)
 }
 // 無限ループに注意
 
 // 偶数を表示
-console.log("偶数表示")
+console.log("2から＋２を表示")
 for (let i = 2; i <= 10; i += 2){
   console.log(i)
 }
@@ -201,9 +209,17 @@ for (let i = 20; i > 0; i -= 5){
   console.log(i)
 }
 
-const morning = ['譜久村','生田', '石田','小田','野中', '牧野', '横山']
+const morning = ['hukumura','ikuta', '石田','小田','野中', '牧野', '横山']
+for (let i = 0; i < morning.length; i++){
+  console.log(morning[i])
+}
+
 for (let i = morning.length - 1; i >= 0; i--) {
   console.log(i, morning[i]);
+}
+
+for (i = 0; i < morning.length; i++){
+    console.log(morning[i].toUpperCase());
 }
 
 console.log('forのネスト')
@@ -228,6 +244,8 @@ console.log('whileループ')
 // 条件式がtrueの時実行される
 // }
 // 条件式がfalthの時抜ける。無限ループしやすいので注意
+// whileを使う時は、ループの回数が分からない時によく使う
+//例えば、パスワードが一致しない時にループでpassを聞き続けるなど。
 
 // passとguessが一致しないと、whileで繰り返す
 //   const pass = '0723';
@@ -239,11 +257,11 @@ console.log('whileループ')
 // }
 
 // break文の例
-// let input = prompt('入力ください')
+// let input = prompt('入力ください　exit で脱出')
 // while (true) {
-//   input = prompt(input);
+//   input = prompt(input, 'exit ghiで脱出');
 //   if (input === 'exit') break;
-// }
+// } //exit 入力で脱出
 
 for (let i = 1; i < 100; i++) {
   console.log(i);
@@ -253,7 +271,8 @@ for (let i = 1; i < 100; i++) {
 
 // 数字当てゲーム
 // let maxnum = parseInt(prompt('数字当てゲームーmax数字を決めて'));
-// //文字列の入力には再度prompt NaNはfalthyなので!でtrueにする
+// // prompt の入力は数字でもstringになるのでparseIntでnamberにする
+// // 文字列の入力には再度prompt NaNはfalthyなので!でtrueにする
 // while (!maxnum || maxnum < 0) {
 //  maxnum = parseInt(prompt('整数の自然数をいれて'));
 // }
@@ -284,7 +303,7 @@ console.log('for of 文')
 // }
 // 列挙可能なオブジェクトを順番に変数にいれていくイメージ
 // const morning = ['譜久村','生田', '石田','小田','野中', '牧野', '横山']
-for (mmember of morning) {
+for (let mmember of morning) {
   console.log(mmember)
 }
 // const jj = [
@@ -293,18 +312,23 @@ for (mmember of morning) {
 //   ['工藤', '松永'],
 //   ['井上'],
 //   ['有澤', '入江', '江端']
-for (jjclass of jj){
-  for (jjmember of jjclass) {
+for (let jjclass of jj){
+  for (let jjmember of jjclass) {
     console.log(jjmember)
   }
 }
 
+console.log('オブジェクトの表示')
 let leaders = {morning:'譜久村', アンジュルム:'竹内', jj:'植村', つばき:'山岸', beyo:'一岡', ocha:'斎藤'}
-console.log(leaders)
-for (group of Object.keys(leaders)) {
+console.log(Object.keys(leaders)); //オブジェクトのkeyを取得
+for (let group of Object.keys(leaders)) {
   console.log(`${group}リーダーは${leaders[group]}`);
 }
 // 下の for in も同じように使える
 // for (group in leaders) {
 //   console.log(`${group}は${leaders[group]}`)
 // }
+
+// for (変数宣言 例:group in オブジェクトの変数){
+//   console.log(変数 例:group);
+//} // 変数のkeyが表示

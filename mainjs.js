@@ -332,3 +332,85 @@ for (let group of Object.keys(leaders)) {
 // for (変数宣言 例:group in オブジェクトの変数){
 //   console.log(変数 例:group);
 //} // 変数のkeyが表示
+
+console.log('関数');
+// 関数の定義の方法
+// function function名(パラメータ){ 処理内容 }
+// function名は camelcase が多い
+{
+function morningOrigin() {
+  console.log('中澤,石黒,飯田,安倍,福田')
+}
+morningOrigin(); // 中澤,石黒,飯田,安倍,福田
+
+function  morningmember(name) {
+  console.log(`morningの${name}さん`)
+}
+morningmember('牧野'); // morningの牧野さん
+morningmember(13); // morningの13さん
+}
+// 関数の中にfor文など使って複雑にする事ができる
+function shout(message) {
+  for (i = 0; i < 3; i++){
+    console.log(`${message.toUpperCase()}`)
+  } //繰り返しはfor文でできる
+}
+shout('hello world'); // HELLO WORLD ×3
+
+//関数のパラメータを複数にする
+function isSameNumbers(x, y) {
+  if (x === y){
+      console.log('ゾロ目');
+  } else {
+      console.log('ゾロ目じゃない');
+  }
+}
+isSameNumbers(5,6); //ゾロ目じゃない
+isSameNumbers(4,4); //ゾロ目
+
+//関数 return で値を返す
+{
+function add(x, y){
+  return x + y; 
+  // const sum = x + y;
+  // return sum;
+  // という意味
+  // returnの後は処理されないので、
+  //if文の else{}など書かなくてもいい使い方もできる
+}
+let sum = add(5,8); 
+console.log(sum) //13
+sum = add(add(5,8),8);
+console.log(sum); // 21
+//sum = add(6, 9)
+//console.log(sum); // 15
+}
+{
+  function add(x, y) {
+    console.log(x + y);
+  }
+  add(3, 7); // 10
+  let sum = add(4,7) // 11
+  console.log(sum) // undefined
+  // return をしないと関数の結果を代入できない
+}
+
+// 25以上でtrue 25未満でfalse になる
+function isShortsweather(tempreature) {
+  if (tempreature >= 25) {
+      return true
+  }
+  return false
+}
+console.log(isShortsweather(24)); // false
+
+// 配列の最後の値をreturn かつ 配列が空の時 null
+function lastElement(array) {
+  if (array.length !== 0) {
+  let last = array[array.length - 1]
+  return last 
+  }
+  return null
+}
+console.log(lastElement([])) // null
+console.log(lastElement([2,4,8])) // 8

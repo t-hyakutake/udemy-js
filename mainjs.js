@@ -409,8 +409,16 @@ function lastElement(array) {
   if (array.length !== 0) {
   let last = array[array.length - 1]
   return last 
+  } else {
+    return null
   }
-  return null
 }
 console.log(lastElement([])) // null
 console.log(lastElement([2,4,8])) // 8
+
+// string の一文字目だけを大文字にして残りの文字も+してreturn
+function capitalize(str) {
+  big = str[0].toUpperCase()
+  return big + str.slice(1);
+}
+console.log(capitalize('naka')); // Naka

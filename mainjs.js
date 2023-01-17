@@ -422,3 +422,40 @@ function capitalize(str) {
   return big + str.slice(1);
 }
 console.log(capitalize('naka')); // Naka
+// 若しくは残りも変数にした方が読みやすいかも
+{
+  function firstup(str) {
+    let first = str[0].toUpperCase();
+    let rest = str.slice(1);
+    return first + rest
+  }
+  console.log(firstup('fukumura')); //Fukumura
+}
+
+//配列のnumberを合計する
+function sumArray(arr) {
+  let sum = 0 
+  for (i = 0; i < arr.length; i++ ) {
+   sum = sum + arr[i]  
+  }
+  return sum
+}
+console.log(sumArray([1,2,5])); // 8
+
+// 入力を曜日に変換する関数
+
+
+
+function returnDay(number) {
+  const week = {
+    1:'Monday', 2:'Tuesday', 3:'Wednesday', 4:'Thursday', 5:'Friday', 6:'Saturday', 7:'Sunday'}
+  
+    if (0 > number || 7 < number) {
+   nullout = null
+  }
+  week.number // numberがkeyになる値
+    number = week['key']
+    return
+
+  }
+console.log(returnDay(1));

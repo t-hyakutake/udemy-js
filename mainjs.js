@@ -443,19 +443,72 @@ function sumArray(arr) {
 console.log(sumArray([1,2,5])); // 8
 
 // 入力を曜日に変換する関数
-
-
-
 function returnDay(number) {
   const week = {
     1:'Monday', 2:'Tuesday', 3:'Wednesday', 4:'Thursday', 5:'Friday', 6:'Saturday', 7:'Sunday'}
   
-    if (0 > number || 7 < number) {
-   nullout = null
+    if (1 > number || 7 < number) {
+   return null
+  }  
+    return week[number] 
   }
-  week.number // numberがkeyになる値
-    number = week['key']
-    return
+console.log(returnDay(0));
 
+console.log('変数のスコープ')
+function collect() {
+  let numnum = 7;
+  console.log(num); 
+  //consoleでcollect() で ７ 
+}
+// collect(); // 呼び出してもerror
+// console.log(numnum); // error
+// 関数内のletは関数内でしか適用されない
+
+{
+  let num = 7;
+  function collect() {
+    num = 9; //外での宣言を呼び出すだけ
+    // let num = 9 //にしたら関数外では適用されず下のconsoleは 7 7が表示
   }
-console.log(returnDay(1));
+  console.log(num) // 7 関数前の宣言を適用
+  collect() // 関数呼び出し
+  console.log(num) // 9 関数内のnumが出る
+} //この書き方はよくないので、外での宣言は使わないのが望ましい
+
+let dog = '柴犬';
+function dogrun() {
+  let dog = '秋田犬'
+  console.log(dog) //なぜか表示されないが'秋田犬'
+  // 関数内の宣言を優先するが、関数内にない場合は外の宣言を適用する
+}
+console.log(dog) // 柴犬
+
+for (i = 0; i < 4; i++){
+  let greet = 'おはよう';
+  // var greetNight = 'こんばんわ'; //varはブロック外でも適用されるので注意
+  console.log(greet);
+}
+//console.log(greet); // not defined ブロック{}無いの宣言は外では使えない
+// console.log(greetNight); //こんばんわ varはブロック外でも適用される
+
+console.log('レキシカルスコープ');
+//function内で宣言されていなくてもスコープして適用される
+function lives() {
+  const singers = ['髭男','misia','smap'];//外にconstしているがcall();で外を呼び出すので適用
+  function call() {
+    // const singers = ['髭男','misia','smap']; //関数内に定義されているのが普通
+    for (let artist of singers) { //singersがfunctioの外でも適用される
+      console.log(`${artist}がうたいます`)
+    }
+   }
+   call();
+}
+lives(); //髭男がうたいます  misiaがうたいます smapがうたいます 
+// なので、以下は別の宣言を適用する
+const singers = ['モーニング娘', 'AKB']
+function call() {
+  for (let artist of singers) { 
+    console.log(`${artist}がうたいます`)
+  }
+}
+call();

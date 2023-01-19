@@ -512,3 +512,49 @@ function call() {
   }
 }
 call();
+//複雑なレキシカルスコープ
+{
+  let shout = '最初の叫び';
+  function actfirst() {
+    console.log(shout)
+    // shout = 'secondのみの叫び'; //actsecond()ではここが適用される
+  }
+  function actsecond() {
+    let shout = '後の叫び'
+    actfirst();
+  }
+ // shout = '最後の叫び' // これだとこちらが適用される
+}
+actfirst(); //最初の叫び
+actsecond();//最初の叫び
+//定義されている場所をよく注意しましょう
+console.log('関数式')
+{
+const sum = function sumsum(num) { //sumsumは定義できていない
+  return num + num
+}
+console.log(sum(4)); // 8
+// console.log(sumsum(6)); //これは定義できていないからエラー
+}
+// 関数の中身もただの値であることを認識しよう
+
+// 関数の引数として関数をうけとる
+{
+  // サイコロを振って表示する関数
+  function dice() {
+    const roll = Math.floor(Math.random() * 6 ) + 1;
+    console.log(roll)
+  }
+  // １回実行する関数
+  function once(func) { //()をつけない
+    func();
+  }  
+  once(dice); // 6までのランダム数
+  // ５回実行する関数
+  function passFive(fun) { //()をつけない
+    for (i = 0; i < 5; i++) {
+      fun();
+    }
+  }
+  passFive(dice); // サイコロ５回
+}

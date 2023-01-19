@@ -528,7 +528,7 @@ call();
 actfirst(); //最初の叫び
 actsecond();//最初の叫び
 //定義されている場所をよく注意しましょう
-console.log('関数式')
+console.log('関数式');
 {
 const sum = function sumsum(num) { //sumsumは定義できていない
   return num + num
@@ -546,10 +546,10 @@ console.log(sum(4)); // 8
     console.log(roll)
   }
   // １回実行する関数
-  function once(func) { //()をつけない
+  function passOnce(func) { //()をつけない
     func();
   }  
-  once(dice); // 6までのランダム数
+  passOnce(dice); // 6までのランダム数
   // ５回実行する関数
   function passFive(fun) { //()をつけない
     for (i = 0; i < 5; i++) {

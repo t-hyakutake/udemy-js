@@ -528,7 +528,7 @@ call();
 actfirst(); //最初の叫び
 actsecond();//最初の叫び
 //定義されている場所をよく注意しましょう
-console.log('関数式')
+console.log('関数式');
 {
 const sum = function sumsum(num) { //sumsumは定義できていない
   return num + num
@@ -538,7 +538,7 @@ console.log(sum(4)); // 8
 }
 // 関数の中身もただの値であることを認識しよう
 
-// 関数の引数として関数をうけとる
+//高階関数 関数の引数として関数をうけとる
 {
   // サイコロを振って表示する関数
   function dice() {
@@ -546,10 +546,10 @@ console.log(sum(4)); // 8
     console.log(roll)
   }
   // １回実行する関数
-  function once(func) { //()をつけない
+  function passOnce(func) { //()をつけない
     func();
   }  
-  once(dice); // 6までのランダム数
+  passOnce(dice); // サイコロ１回
   // ５回実行する関数
   function passFive(fun) { //()をつけない
     for (i = 0; i < 5; i++) {
@@ -558,3 +558,12 @@ console.log(sum(4)); // 8
   }
   passFive(dice); // サイコロ５回
 }
+// 高階関数 関数をつくる関数
+{
+function makeBetweenFunc(min,max) {
+  return function(num) {
+    return num >= min && num >= max;
+  }
+}
+}
+

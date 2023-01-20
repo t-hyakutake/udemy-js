@@ -538,7 +538,7 @@ console.log(sum(4)); // 8
 }
 // 関数の中身もただの値であることを認識しよう
 
-// 関数の引数として関数をうけとる
+//高階関数 関数の引数として関数をうけとる
 {
   // サイコロを振って表示する関数
   function dice() {
@@ -549,7 +549,7 @@ console.log(sum(4)); // 8
   function passOnce(func) { //()をつけない
     func();
   }  
-  passOnce(dice); // 6までのランダム数
+  passOnce(dice); // サイコロ１回
   // ５回実行する関数
   function passFive(fun) { //()をつけない
     for (i = 0; i < 5; i++) {
@@ -558,3 +558,12 @@ console.log(sum(4)); // 8
   }
   passFive(dice); // サイコロ５回
 }
+// 高階関数 関数をつくる関数
+{
+function makeBetweenFunc(min,max) {
+  return function(num) {
+    return num >= min && num >= max;
+  }
+}
+}
+

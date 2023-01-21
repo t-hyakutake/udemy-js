@@ -562,8 +562,15 @@ console.log(sum(4)); // 8
 {
 function makeBetweenFunc(min,max) {
   return function(num) {
-    return num >= min && num >= max;
+    return num >= min && num <= max;
+  //  引数に数字をいれる事で、その範囲内にあるかを確認できる関数
   }
 }
-}
+const ischild = makeBetweenFunc(0, 18); // 0~18でtrueになる関数
+console.log(ischild(15)); // true
+console.log(ischild(30)); // false
 
+const isPassScore = makeBetweenFunc(80, 100); // 80~100で合格の関数
+console.log(isPassScore(85)); // true
+
+}

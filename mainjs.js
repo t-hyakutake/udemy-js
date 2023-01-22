@@ -550,13 +550,13 @@ console.log(sum(4)); // 8
     func();
   }  
   passOnce(dice); // サイコロ１回
-  // ５回実行する関数
+  // 2回実行する関数
   function passFive(fun) { //()をつけない
-    for (i = 0; i < 5; i++) {
+    for (i = 0; i < 1; i++) {
       fun();
     }
   }
-  passFive(dice); // サイコロ５回
+  passFive(dice); // サイコロ2回
 }
 // 高階関数 関数をつくる関数
 {
@@ -572,5 +572,56 @@ console.log(ischild(30)); // false
 
 const isPassScore = makeBetweenFunc(80, 100); // 80~100で合格の関数
 console.log(isPassScore(85)); // true
-
 }
+//オブジェクトのkeyに関数を定義
+const makeMath = {
+  pi: 3.14,
+  square: function (num) {
+    return num * num
+  },
+  cube: function (num) {
+    return num * num * num
+  }
+}
+console.log(makeMath.square(3)) // 9
+console.log(makeMath.cube(3)) // 27
+console.log(makeMath['cube'](4)) // 64 普通このアクセスはしないので.keyでアクセスしよう
+//メソッドの定義は省略できる（オブジェクトのkeyと値を合体できる）
+const makeOmitMath = {
+  pi: 3.14,
+  square(num) { // : function を省略できるが、オブジェクトだと忘れそうになる。,を忘れないように注意
+    return num * num
+  },
+  cube(num) { // : function を省略している
+    return num * num * num
+  }
+}
+console.log(makeOmitMath.square(3)) // 9
+console.log(makeOmitMath.cube(3)) // 27
+
+// this 同じオブジェクト内の他のプロパティを使える
+// let leaders = {morning:'譜久村', アンジュルム:'竹内', jj:'植村', つばき:'山岸', beyo:'一岡', ocha:'斎藤'}
+leaders.add = function(){
+  console.log(`${this.morning}は最高のleaderです`)
+}; // オブジェクトを追加 keyがaddで値がfunction～
+// console.log(leaders.add());
+leaders.add(); // 関数
+console.log(leaders.add) 
+
+
+const hen = {
+name: 'Helen',
+eggCount: 0,
+layAnEgg: function() {
+this.eggCount += 1;
+return 'EGG';
+}
+}
+console.log(hen.name); //'Helen'
+console.log(hen.eggCount);// 0
+console.log(hen.layAnEgg()); // EGG
+console.log(hen.eggCount); // 1
+hen.layAnEgg(); //EGG
+console.log(hen.eggCount); // 2
+hen.layAnEgg(); // EGG
+console.log(hen.eggCount); // 3

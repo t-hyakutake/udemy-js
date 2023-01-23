@@ -601,12 +601,12 @@ console.log(makeOmitMath.cube(3)) // 27
 
 // this 同じオブジェクト内の他のプロパティを使える
 // let leaders = {morning:'譜久村', アンジュルム:'竹内', jj:'植村', つばき:'山岸', beyo:'一岡', ocha:'斎藤'}
-leaders.add = function(){
+leaders.praise = function(){
   console.log(`${this.morning}は最高のleaderです`)
 }; // オブジェクトを追加 keyがaddで値がfunction～
 // console.log(leaders.add());
-leaders.add(); // 関数
-console.log(leaders.add) 
+console.log(leaders);
+leaders.praise(); // 譜久村は最高のleaderです
 
 
 const hen = {

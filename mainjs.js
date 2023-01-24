@@ -625,3 +625,23 @@ hen.layAnEgg(); //EGG
 console.log(hen.eggCount); // 2
 hen.layAnEgg(); // EGG
 console.log(hen.eggCount); // 3
+
+console.log('try catch エラーでも止まらないようにする方法');
+{
+function firstName(name) {
+  console.log(name.toUpperCase()); //nameを大文字にする
+}
+firstName('tomohiro'); // TOMOHIRO
+// firstName(113) // numberは大文字にできないのでエラー
+
+function lastName(name) {
+  try {
+    console.log(name.toUpperCase());
+  } catch (error) {
+    console.log(error);
+    console.log('numberは大文字にできません')
+  }
+}
+lastName('hyaku') // HYAKU
+lastName(3425) // 本来出るはずのエラー表示と'numberは大文字にできません'
+}

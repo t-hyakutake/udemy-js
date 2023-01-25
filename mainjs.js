@@ -211,15 +211,15 @@ for (let i = 20; i > 0; i -= 5){
 
 const morning = ['hukumura','ikuta', '石田','小田','野中', '牧野', '横山']
 for (let i = 0; i < morning.length; i++){
-  console.log(morning[i])
+  console.log(morning[i]); // インデックス0から順に表示
 }
 
 for (let i = morning.length - 1; i >= 0; i--) {
-  console.log(i, morning[i]);
+  console.log(i, morning[i]); //最後の配列から順に表示
 }
 
-for (i = 0; i < morning.length; i++){
-    console.log(morning[i].toUpperCase());
+for (i = 0; i < 2; i++){
+    console.log(morning[i].toUpperCase()); // 大文字で表示
 }
 
 console.log('forのネスト')
@@ -637,7 +637,7 @@ firstName('tomohiro'); // TOMOHIRO
 function lastName(name) {
   try {
     console.log(name.toUpperCase());
-  } catch (error) {
+  } catch (error) { // errorはなんでもいいeとか
     console.log(error);
     console.log('numberは大文字にできません')
   }
@@ -645,3 +645,35 @@ function lastName(name) {
 lastName('hyaku') // HYAKU
 lastName(3425) // 本来出るはずのエラー表示と'numberは大文字にできません'
 }
+console.log('配列へのメソッド')
+morning.shift();
+morning.shift();
+morning.push('ここまで')
+console.log('for Each')
+console.log(morning);
+function print(menber) { //menberはなんでもいい
+  console.log(menber);
+};
+morning.forEach(print); // 配列をそれぞれ表示
+// 上のコードを省略して書くことも可能
+morning.forEach( // forEachの引数に関数をそのままいれる
+  function (menber) { // printは不要
+  console.log(menber);
+}
+);
+morning.pop();
+// for of でも書き換え可能
+for (menber of morning) {
+  console.log(menber);
+}
+console.log('forEachで配列の中のオブジェクトを表示')
+const scoreBooks = [
+  {name:'米村',score:90},
+  {name:'石栗',score:80},
+  {name:'北原',score:85}
+]
+scoreBooks.forEach(
+  function (result) { // 関数を実行しているのはforEachの中だけ
+    console.log(`${result.name}は${result.score}点`);
+  }
+)

@@ -211,15 +211,15 @@ for (let i = 20; i > 0; i -= 5){
 
 const morning = ['hukumura','ikuta', '石田','小田','野中', '牧野', '横山']
 for (let i = 0; i < morning.length; i++){
-  console.log(morning[i])
+  console.log(morning[i]); // インデックス0から順に表示
 }
 
 for (let i = morning.length - 1; i >= 0; i--) {
-  console.log(i, morning[i]);
+  console.log(i, morning[i]); //最後の配列から順に表示
 }
 
-for (i = 0; i < morning.length; i++){
-    console.log(morning[i].toUpperCase());
+for (i = 0; i < 2; i++){
+    console.log(morning[i].toUpperCase()); // 大文字で表示
 }
 
 console.log('forのネスト')
@@ -637,7 +637,7 @@ firstName('tomohiro'); // TOMOHIRO
 function lastName(name) {
   try {
     console.log(name.toUpperCase());
-  } catch (error) {
+  } catch (error) { // errorはなんでもいいeとか
     console.log(error);
     console.log('numberは大文字にできません')
   }
@@ -645,3 +645,160 @@ function lastName(name) {
 lastName('hyaku') // HYAKU
 lastName(3425) // 本来出るはずのエラー表示と'numberは大文字にできません'
 }
+console.log('配列へのメソッド')
+morning.shift();
+morning.shift();
+morning.push('ここまで')
+console.log('for Each')
+console.log(morning);
+function print(menber) { //menberはなんでもいい
+  console.log(menber);
+};
+morning.forEach(print); // 配列をそれぞれ表示
+// 上のコードを省略して書くことも可能
+morning.forEach( // forEachの引数に関数をそのままいれる
+  function (menber) { // printは不要
+  console.log(menber);
+}
+);
+morning.pop();
+// for of でも書き換え可能
+for (menber of morning) {
+  console.log(menber);
+}
+console.log('forEachで配列の中のオブジェクトを表示')
+const scoreBooks = [
+  {name:'米村',score:90},
+  {name:'石栗',score:80},
+  {name:'北原',score:85}
+]
+scoreBooks.forEach(
+  function (result) { // 関数を実行しているのはforEachの中だけ
+    console.log(`${result.name}は${result.score}点`);
+  }
+)
+
+// map 新しく配列をつくるメソッド
+const array = [1, 2, 4, 8];
+
+// const resultArray = array.map(x => x * 2) //アロー関数で書くとこうなる
+const resultArray = array.map(function (x) {
+  return x * 2;
+}) 
+
+console.log(resultArray)
+// expected output: Array [2, 4, 8, 16]
+
+console.log('変数scoreBooksからnameだけの配列を作る');
+let ochaMenbers = scoreBooks.map(function (menbers) {
+  return menbers.name; //menbersは分かりやすいものでいい
+})
+console.log(ochaMenbers); //米村,石栗,北原
+
+const object = {
+    "hoge": {text: "fuga"},
+    "foo":  {text: "bar" },
+    "fiz":  {text: "buzz"}
+};
+
+const objectToArray = Object.keys(object).map(key => {
+    const value = object[key]
+    value['id'] = key
+    return value
+});
+console.log(objectToArray);
+
+console.log('アロー関数 関数式の省略');
+const rollDie = function () {
+  return Math.floor(Math.random() * 6) + 1;
+}
+const newRoll = () => { //()の中身がある時は省略できる
+  return Math.floor(Math.random() * 6) + 1;
+}
+// functionを省略できる アローを書く
+console.log(`サイコロの目${rollDie(1)}`); //
+console.log(`新サイコロ${newRoll(1)}`); //
+
+// 上記の書き換え
+let newOcha = scoreBooks.map(menbers => {
+  return menbers.name; 
+});
+// let newOcha = scoreBooks.map(menbers => menbers.name);
+console.log(newOcha);
+console.log('アロー関数の省略まとめ');
+const isEven = function (num) {
+  return num % 2 === 0;
+}
+const isEven2 = (num) => {  // functionは省略できる
+  return num % 2 === 0;
+}
+const isEven3 = num => { // 引数が一つの時は()を省略可能
+  return num % 2 === 0;
+}
+const isEven4 = num => ( // returnを省略する時は{}を()にする
+   num % 2 === 0
+);
+const isEven5 = num => num % 2 === 0; // これも暗黙でreturnする
+console.log(isEven5(4)); // true
+
+// setTimeout clearInterval
+// setTimeout(() => {
+//   console.log('setTimeoutでの表示3s');
+// },3000); //３秒後に表示
+// const id = setInterval(() => {
+//   console.log(Math.random());
+// },1000);
+// setTimeout(() => {  // これでsetIntervalが止まる
+//   clearInterval(id); // id を使ってsetIntervalを制御する
+//   console.log('clearTimeで4S後にとめました')
+// },4000);
+
+console.log('filter コールバック関数のtrueのみで新しい配列を作る');
+console.log(resultArray); //[2,4,8,16]
+const overFive = resultArray.filter((num) => {
+  return num > 5;
+})
+console.log(overFive); //[8, 16]
+
+scoreBooks.unshift({name:'斎藤', score:92});
+// console.log(scoreBooks);
+const excellentMember = scoreBooks.filter(e => {
+  return e.score >= 86; 
+  //scoreBooksの配列中のkeyがscoreで値が81以上の配列を新しく配列にする
+});
+console.log(excellentMember); 
+
+const excellentName = scoreBooks
+  // .filter(e => { return e.score >= 86 })
+  .filter(e => e.score >= 86) // 略済み
+  .map(e => e.name);
+console.log(excellentName); 
+// 86以上のnameの値を配列にする
+
+// stringsが10未満だけの配列を新しく作る関数
+function validUserNames(arr) {
+  return arr.filter(name => name.length < 10);
+}
+console.log(validUserNames(['efee','dqfqwfqfqe','dqqwdwqdwqdqd','edqdqw']));
+
+console.log('every some trueかfalseを返す');
+// every はすべて満たしてtrue
+// some は一つでも満たせばtrue
+// booleanを返すので、if文などで条件分岐に使いやすい
+console.log(scoreBooks);
+console.log(scoreBooks.score)
+
+function checkScores(scoreBooks) {
+  return scoreBooks.every(book => book.score >= 85);
+}
+console.log(checkScores(scoreBooks));
+
+// 以下は引数に数字をいれてbooleanを返す関数の例
+function checkScores(scoreBooks, minScore) {
+  return scoreBooks.every(book => book.score >= minScore);
+}
+console.log(checkScores(scoreBooks, 80));
+
+// 引数にscoreを入力してtrueかfalseかを判定する
+const checkScoresJustNum = minScore => scoreBooks.every(book => book.score >= minScore);
+console.log(checkScoresJustNum(70)); //みんな70以上なのでtrue

@@ -708,7 +708,7 @@ const objectToArray = Object.keys(object).map(key => {
 });
 console.log(objectToArray);
 
-console.log('アロー関数　関数式の省略');
+console.log('アロー関数 関数式の省略');
 const rollDie = function () {
   return Math.floor(Math.random() * 6) + 1;
 }
@@ -742,13 +742,63 @@ const isEven5 = num => num % 2 === 0; // これも暗黙でreturnする
 console.log(isEven5(4)); // true
 
 // setTimeout clearInterval
-setTimeout(() => {
-  console.log('setTimeoutでの表示3s');
-},3000); //３秒後に表示
-const id = setInterval(() => {
-  console.log(Math.random());
-},1000);
-setTimeout(() => {  // これでsetIntervalが止まる
-  clearInterval(id); // id を使ってsetIntervalを制御する
-  console.log('clearTimeで4S後にとめました')
-},4000);
+// setTimeout(() => {
+//   console.log('setTimeoutでの表示3s');
+// },3000); //３秒後に表示
+// const id = setInterval(() => {
+//   console.log(Math.random());
+// },1000);
+// setTimeout(() => {  // これでsetIntervalが止まる
+//   clearInterval(id); // id を使ってsetIntervalを制御する
+//   console.log('clearTimeで4S後にとめました')
+// },4000);
+
+console.log('filter コールバック関数のtrueのみで新しい配列を作る');
+console.log(resultArray); //[2,4,8,16]
+const overFive = resultArray.filter((num) => {
+  return num > 5;
+})
+console.log(overFive); //[8, 16]
+
+scoreBooks.unshift({name:'斎藤', score:92});
+// console.log(scoreBooks);
+const excellentMember = scoreBooks.filter(e => {
+  return e.score >= 86; 
+  //scoreBooksの配列中のkeyがscoreで値が81以上の配列を新しく配列にする
+});
+console.log(excellentMember); 
+
+const excellentName = scoreBooks
+  // .filter(e => { return e.score >= 86 })
+  .filter(e => e.score >= 86) // 略済み
+  .map(e => e.name);
+console.log(excellentName); 
+// 86以上のnameの値を配列にする
+
+// stringsが10未満だけの配列を新しく作る関数
+function validUserNames(arr) {
+  return arr.filter(name => name.length < 10);
+}
+console.log(validUserNames(['efee','dqfqwfqfqe','dqqwdwqdwqdqd','edqdqw']));
+
+console.log('every some trueかfalseを返す');
+// every はすべて満たしてtrue
+// some は一つでも満たせばtrue
+// booleanを返すので、if文などで条件分岐に使いやすい
+console.log(scoreBooks);
+console.log(scoreBooks.score)
+
+function checkScores(scoreBooks) {
+  return scoreBooks.every(book => book.score >= 85);
+}
+console.log(checkScores(scoreBooks));
+
+// 以下は引数に数字をいれてbooleanを返す関数の例
+function checkScores(scoreBooks, minScore) {
+  return scoreBooks.every(book => book.score >= minScore);
+}
+console.log(checkScores(scoreBooks, 80));
+
+// 引数にscoreを入力してtrueかfalseかを判定する
+const checkScoresJustNum = minScore => scoreBooks.every(book => book.score >= minScore);
+console.log(checkScoresJustNum(70)); //みんな70以上なのでtrue

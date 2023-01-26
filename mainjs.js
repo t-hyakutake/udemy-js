@@ -677,3 +677,51 @@ scoreBooks.forEach(
     console.log(`${result.name}は${result.score}点`);
   }
 )
+
+// map 新しく配列をつくるメソッド
+const array = [1, 2, 4, 8];
+
+// const resultArray = array.map(x => x * 2) //アロー関数で書くとこうなる
+const resultArray = array.map(function (x) {
+  return x * 2;
+}) 
+
+console.log(resultArray)
+// expected output: Array [2, 4, 8, 16]
+
+console.log('変数scoreBooksからnameだけの配列を作る');
+let ochaMenbers = scoreBooks.map(function (menbers) {
+  return menbers.name; //menbersは分かりやすいものでいい
+})
+console.log(ochaMenbers); //米村,石栗,北原
+
+const object = {
+    "hoge": {text: "fuga"},
+    "foo":  {text: "bar" },
+    "fiz":  {text: "buzz"}
+};
+
+const objectToArray = Object.keys(object).map(key => {
+    const value = object[key]
+    value['id'] = key
+    return value
+});
+console.log(objectToArray);
+
+console.log('アロー関数　関数式の省略');
+const rollDie = function () {
+  return Math.floor(Math.random() * 6) + 1;
+}
+const newRoll = () => { //()の中身がある時は省略できる
+  return Math.floor(Math.random() * 6) + 1;
+}
+// functionを省略できる アローを書く
+console.log(`サイコロの目${rollDie(1)}`); //
+console.log(`新サイコロ${newRoll(1)}`); //
+
+// 上記の書き換え
+let newOcha = scoreBooks.map(menbers => {
+  return menbers.name; 
+}); //またreturnが1行の時は{}とreturnを省略できる
+// let newOcha = scoreBooks.map(menbers => menbers.name);
+console.log(newOcha)

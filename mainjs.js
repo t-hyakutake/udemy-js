@@ -722,6 +722,33 @@ console.log(`新サイコロ${newRoll(1)}`); //
 // 上記の書き換え
 let newOcha = scoreBooks.map(menbers => {
   return menbers.name; 
-}); //またreturnが1行の時は{}とreturnを省略できる
+});
 // let newOcha = scoreBooks.map(menbers => menbers.name);
-console.log(newOcha)
+console.log(newOcha);
+console.log('アロー関数の省略まとめ');
+const isEven = function (num) {
+  return num % 2 === 0;
+}
+const isEven2 = (num) => {  // functionは省略できる
+  return num % 2 === 0;
+}
+const isEven3 = num => { // 引数が一つの時は()を省略可能
+  return num % 2 === 0;
+}
+const isEven4 = num => ( // returnを省略する時は{}を()にする
+   num % 2 === 0
+);
+const isEven5 = num => num % 2 === 0; // これも暗黙でreturnする
+console.log(isEven5(4)); // true
+
+// setTimeout clearInterval
+setTimeout(() => {
+  console.log('setTimeoutでの表示3s');
+},3000); //３秒後に表示
+const id = setInterval(() => {
+  console.log(Math.random());
+},1000);
+setTimeout(() => {  // これでsetIntervalが止まる
+  clearInterval(id); // id を使ってsetIntervalを制御する
+  console.log('clearTimeで4S後にとめました')
+},4000);

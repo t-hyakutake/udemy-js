@@ -332,6 +332,12 @@ for (let group of Object.keys(leaders)) {
 // for (変数宣言 例:group in オブジェクトの変数){
 //   console.log(変数 例:group);
 //} // 変数のkeyが表示
+console.log('オブジェクトへのプロパティの追加');
+leaders.研修生ユニット = '松原';
+console.log(leaders);
+console.log('オブジェクトへのプロパティの削除');
+delete leaders.研修生ユニット;
+console.log(leaders);
 
 console.log('関数');
 // 関数の定義の方法
@@ -476,11 +482,12 @@ function collect() {
 } //この書き方はよくないので、外での宣言は使わないのが望ましい
 
 let dog = '柴犬';
-function dogrun() {
+function changeDog() {
   let dog = '秋田犬'
-  console.log(dog) //なぜか表示されないが'秋田犬'
+  console.log(dog) // '秋田犬'
   // 関数内の宣言を優先するが、関数内にない場合は外の宣言を適用する
 }
+changeDog();
 console.log(dog) // 柴犬
 
 for (i = 0; i < 4; i++){
@@ -538,6 +545,21 @@ console.log(sum(4)); // 8
 }
 // 関数の中身もただの値であることを認識しよう
 
+{ //配列の中から偶数だけを新配列にする関数
+  function allEvens(Array) {
+    let newArray = [];
+    for (let i = 0; i < Array.length; i++) {
+    if (Array[i] % 2 === 0) {
+    newArray.push(Array[i]);
+    console.log(newArray)
+    }
+    }
+    console.log(newArray)
+    return newArray;
+    }
+    allEvens([2,4,6,12,34,13,43,])
+}
+
 //高階関数 関数の引数として関数をうけとる
 {
   // サイコロを振って表示する関数
@@ -589,7 +611,7 @@ console.log(makeMath['cube'](4)) // 64 普通このアクセスはしないの�
 //メソッドの定義は省略できる（オブジェクトのkeyと値を合体できる）
 const makeOmitMath = {
   pi: 3.14,
-  square(num) { // : function を省略できるが、オブジェクトだと忘れそうになる。,を忘れないように注意
+  square(num) { // : function を省略できる、オブジェクトだと忘れそうになる。,を忘れないように注意
     return num * num
   },
   cube(num) { // : function を省略している
@@ -802,3 +824,26 @@ console.log(checkScores(scoreBooks, 80));
 // 引数にscoreを入力してtrueかfalseかを判定する
 const checkScoresJustNum = minScore => scoreBooks.every(book => book.score >= minScore);
 console.log(checkScoresJustNum(70)); //みんな70以上なのでtrue
+
+// reduce 引数に配列のインデックス 0,1 をいれる。そのインデックスを加工してk結果を次の配列とまた加工する。最終的に全ての配列を加工し値を一つ出力する
+const reduceArray = resultArray.reduce((a, b) => {
+  return a + b; 
+}) // [2,4,8,16] の配列のインデックスをひとつづつ + して a にし、次の インデックスを + して最終的に合計をreturn
+console.log(reduceArray)
+
+
+// 配列の中のオブジェクトのプロパティの値num が最大のプロパティを取り出し、別のkeyの値を出力する
+// const scoreBooks = [
+//   {name:'斎藤',score:92},
+//   {name:'米村',score:90},
+//   {name:'石栗',score:80},
+//   {name:'北原',score:85}
+// ] score を比較して最大のnameである'斎藤'を出力する
+  let bestMember = scoreBooks.reduce((bestScore, currScore) => {
+    // 配列の中の２つの値を引数にします
+   if (bestScore.score < currScore.score) { // keyがscoreの値を比較
+    return currScore; // 大きかったらreturn
+    }
+    return bestScore; // 小さかったら
+  });
+  console.log(bestMember.name); 

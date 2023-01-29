@@ -808,7 +808,6 @@ console.log('every some trueかfalseを返す');
 // some は一つでも満たせばtrue
 // booleanを返すので、if文などで条件分岐に使いやすい
 console.log(scoreBooks);
-console.log(scoreBooks.score)
 
 function checkScores(scoreBooks) {
   return scoreBooks.every(book => book.score >= 85);
@@ -825,7 +824,7 @@ console.log(checkScores(scoreBooks, 80));
 const checkScoresJustNum = minScore => scoreBooks.every(book => book.score >= minScore);
 console.log(checkScoresJustNum(70)); //みんな70以上なのでtrue
 
-// reduce 引数に配列のインデックス 0,1 をいれる。そのインデックスを加工してk結果を次の配列とまた加工する。最終的に全ての配列を加工し値を一つ出力する
+// reduce(a, b) aは最終的な値 bは各々の値 引数に配列のインデックス 0,1 をいれる。そのインデックスを加工してk結果を次の配列とまた加工する。最終的に全ての配列を加工し値を一つ出力する
 const reduceArray = resultArray.reduce((a, b) => {
   return a + b; 
 }) // [2,4,8,16] の配列のインデックスをひとつづつ + して a にし、次の インデックスを + して最終的に合計をreturn
@@ -847,3 +846,130 @@ console.log(reduceArray)
     return bestScore; // 小さかったら
   });
   console.log(bestMember.name); 
+// sortメソッド score順に配列を並べて、nameを新しい配列にする
+const sortedScoreBooks = scoreBooks.sort((a, b) => {
+  if (a.score < b.score) {
+  return 1;
+  } else if (a.score > b.score) {
+  return -1;
+  } else {
+  return 0;
+  }
+  });
+  const names = sortedScoreBooks.map(book => book.name);
+console.log(names);
+
+// デフォルト引数 関数の引数がundefinedの時に初期値をあてる
+console.log('デフォルト引数');
+function greet(name, greeting = 'こんにちは', date) {
+  console.log(`${date}日ですね、${name}さん${greeting}、ではごきげんよう`)
+}
+greet('譜久村', 'おはよう', 12); //12日ですね、譜久村さんおはよう、ではごきげんよう
+// greet('譜久村', , 12); // error  
+greet('生田', undefined, 15); // デフォルトを使う時はundefinedを入力する
+ console.log('スプレッド構文 配列などの列挙可能なオブジェクトを展開する')
+ console.log(...names); //
+
+// スプレット構文で新しい配列を簡単に作る
+let anotherOcha = ['広本', '窪田', '田代' ,'中山', '西崎',]
+ochanorma = ['斎藤',...ochaMenbers, ...anotherOcha, '筒井']; //concatより簡単
+console.log(ochanorma)
+
+ // オブジェクトでのスプレット構文
+ console.log(...scoreBooks);
+ // console.log(...scoreBooks.name); // これはエラーになるので、一度nameの配列をmapで作ることで展開できる
+{
+  let ochaMenbers = scoreBooks.map(function (menbers) {
+    return menbers.name; 
+  })
+  console.log(...ochaMenbers)
+}
+// オブジェクトのkeyが被る時は後の方を当てる
+let profFukumura = {name:'譜久村', birth:'10.30' ,addclass:10 };
+let addFukumuraProf = {sex:'female', addclass:9};
+let profFukumura23 = {...profFukumura, ...addFukumuraProf};
+console.log(profFukumura23); //加入期別9期になってる
+// 配列をオブジェクトにすると、インデックスがkeyになる
+const objectOchanorma = {...ochanorma}
+console.log(objectOchanorma)
+
+console.log('レスト構文'); // ...で配列をつくることができる
+function sum(...nums) {
+  console.log(nums)// 関数を実行した時に配列ができる
+  return nums.reduce((total, num) => total + num); 
+}
+console.log(sum(1,2,4));
+// javaScript のスプレッド構文 (spread syntax) は、配列やオブジェクトの値を展開するための構文です。レスト構文 (rest syntax) は、関数呼び出しの際に渡された引数を配列としてまとめるための構文です。
+let arr1 = [1, 2, 3];
+let arr2 = [4, 5, 6];
+let combined = [...arr1, ...arr2];
+console.log(combined); // [1, 2, 3, 4, 5, 6]
+{ // レスト構文は引数を配列のようにあつかえる
+  function add(...nums) {
+    let sum = 0;
+    for (const num of nums) {
+      sum += num;
+    }
+    return sum;
+  }
+  console.log(add(1, 2, 3, 4, 5)); // 15
+}
+// レスト構文の例
+{
+  function sum() {
+    console.log(arguments); //配列ではない配列の様なもの
+    // reduce arguments.reduce((total + num) => total + num); errorになる 
+  }
+  sum(2,4,6);
+
+  const restsum = (...nums) => {
+    const total = nums.reduce((sum, num) => sum + num);
+    return total;
+    }
+    console.log(restsum(3, 4, 5)); // 12
+}
+
+function distributeTeam(chicatetsu, amenomori, ...rest) {
+  // 引数3個目以降は全てrestになる
+  console.log(`＃chica${chicatetsu}`);
+  console.log(`雨森${amenomori}`);
+  console.log(`その他のメンバー${rest}`);
+}
+distributeTeam('一岡', '高瀬', '松原', '花');
+// スプレッド構文は配列やオブジェクトを展開するために使用され、レスト構文は複数の引数を一つの配列として受け取るために使用されます。
+
+console.log('分割代入'); //まとめてconst や let ができる
+// 配列のプロパティをまとめて定義
+console.log(ochanorma);
+const [ochatop, ochasecond, ...ocharest] = ochanorma
+// ochanormaの配列を3つに充てる。レスト構文でindex2以降はまとめている
+console.log(ochatop);
+console.log(ochasecond);
+console.log(ocharest);
+
+// オブジェクトの分割代入
+{
+  console.log(leaders)
+  const {morning, アンジュルム} = leaders; // {key} で 値をまとめて定義できる
+  console.log(morning,アンジュルム); 
+  const {jj: jjleader } = leaders; // : の後に任意の定数名や変数名を付ける事ができる
+  console.log(jjleader) 
+  // 分割代入のデフォルト設定 keyがない時にデフォルトで代入できる
+  const { つばき: tubaki, kobusi = '解散', beyo: beyonds = '解散'} = leaders; //定数名の変更とデフォルトの設定両方できる
+  console.log( tubaki, kobusi, beyonds); // keyがある時はデフォルトを上書きする
+}
+// 関数のパラメーターに分割代入
+const person = {
+  name: 'Nakazawa',
+  age: 49,
+  city: 'Fukuoka'
+};
+function greet({ name, age }) {
+  console.log(`こんにちは, 私は ${name} で ${age} 歳よ`);
+  console.log(name, age) // 関数のパラメータにいれて定義する事ができる
+}
+greet(person);
+{
+  const filteredScoreBooks = scoreBooks.filter(({score}) => score >= 90); //パラメーターに定数score を代入している
+console.log(filteredScoreBooks); //score90以上のオブジェクトを新しい配列にしている
+}

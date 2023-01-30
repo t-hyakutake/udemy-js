@@ -964,7 +964,7 @@ const person = {
   age: 49,
   city: 'Fukuoka'
 };
-function greet({ name, age }) {
+function greet({ name, age }) { //関数のパラメーターに分割代入できる
   console.log(`こんにちは, 私は ${name} で ${age} 歳よ`);
   console.log(name, age) // 関数のパラメータにいれて定義する事ができる
 }

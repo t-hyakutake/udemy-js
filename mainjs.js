@@ -656,7 +656,7 @@ function firstName(name) {
 firstName('tomohiro'); // TOMOHIRO
 // firstName(113) // numberは大文字にできないのでエラー
 
-function lastName(name) {
+function lastName(name) { // try してerrorの時はcatchを実行
   try {
     console.log(name.toUpperCase());
   } catch (error) { // errorはなんでもいいeとか
@@ -700,7 +700,7 @@ scoreBooks.forEach(
   }
 )
 
-// map 新しく配列をつくるメソッド
+// map 新しく配列をつくる 全ての要素を変換する事が目的
 const array = [1, 2, 4, 8];
 
 // const resultArray = array.map(x => x * 2) //アロー関数で書くとこうなる
@@ -776,6 +776,7 @@ console.log(isEven5(4)); // true
 // },4000);
 
 console.log('filter コールバック関数のtrueのみで新しい配列を作る');
+// filter()は条件に一致する要素を選択する目的
 console.log(resultArray); //[2,4,8,16]
 const overFive = resultArray.filter((num) => {
   return num > 5;

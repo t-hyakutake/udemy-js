@@ -955,7 +955,7 @@ console.log(ocharest);
   console.log(morning,アンジュルム); 
   const {jj: jjleader } = leaders; // : の後に任意の定数名や変数名を付ける事ができる
   console.log(jjleader) 
-  // 分割代入のデフォルト設定 keyがない時にデフォルトで代入できる
+  // 分割代入のデフォルト設定 keyがない時に=でデフォルトを代入できる
   const { つばき: tubaki, kobusi = '解散', beyo: beyonds = '解散'} = leaders; //定数名の変更とデフォルトの設定両方できる
   console.log( tubaki, kobusi, beyonds); // keyがある時はデフォルトを上書きする
 }

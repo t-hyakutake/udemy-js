@@ -339,6 +339,26 @@ console.log('オブジェクトへのプロパティの削除');
 delete leaders.研修生ユニット;
 console.log(leaders);
 
+// for in と for of の違い 
+// for...inは配列のインデックスをループする
+// for...ofは配列の値をループする
+//配列はforof オブジェクトはforinで使うとよい
+
+let numbers = [1, 2, 3, 4, 5];
+
+// for...in
+for (let index in numbers) {
+  console.log(index, numbers[index]);
+}
+for (let value in numbers) {
+  console.log(value, numbers[value]);
+}
+
+// for...of
+for (let value of numbers) {
+  console.log(value);
+}
+
 console.log('関数');
 // 関数の定義の方法
 // function function名(パラメータ){ 処理内容 }

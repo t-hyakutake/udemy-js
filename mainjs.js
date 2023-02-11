@@ -339,6 +339,26 @@ console.log('オブジェクトへのプロパティの削除');
 delete leaders.研修生ユニット;
 console.log(leaders);
 
+// for in と for of の違い 
+// for...inは配列のインデックスをループする
+// for...ofは配列の値をループする
+//配列はforof オブジェクトはforinで使うとよい
+
+let numbers = [1, 2, 3, 4, 5];
+
+// for...in
+for (let index in numbers) {
+  console.log(index, numbers[index]);
+}
+for (let value in numbers) {
+  console.log(value, numbers[value]);
+}
+
+// for...of
+for (let value of numbers) {
+  console.log(value);
+}
+
 console.log('関数');
 // 関数の定義の方法
 // function function名(パラメータ){ 処理内容 }
@@ -656,7 +676,7 @@ function firstName(name) {
 firstName('tomohiro'); // TOMOHIRO
 // firstName(113) // numberは大文字にできないのでエラー
 
-function lastName(name) {
+function lastName(name) { // try してerrorの時はcatchを実行
   try {
     console.log(name.toUpperCase());
   } catch (error) { // errorはなんでもいいeとか
@@ -700,7 +720,7 @@ scoreBooks.forEach(
   }
 )
 
-// map 新しく配列をつくるメソッド
+// map 新しく配列をつくる 全ての要素を変換する事が目的
 const array = [1, 2, 4, 8];
 
 // const resultArray = array.map(x => x * 2) //アロー関数で書くとこうなる
@@ -776,6 +796,7 @@ console.log(isEven5(4)); // true
 // },4000);
 
 console.log('filter コールバック関数のtrueのみで新しい配列を作る');
+// filter()は条件に一致する要素を選択する目的
 console.log(resultArray); //[2,4,8,16]
 const overFive = resultArray.filter((num) => {
   return num > 5;
@@ -954,7 +975,7 @@ console.log(ocharest);
   console.log(morning,アンジュルム); 
   const {jj: jjleader } = leaders; // : の後に任意の定数名や変数名を付ける事ができる
   console.log(jjleader) 
-  // 分割代入のデフォルト設定 keyがない時にデフォルトで代入できる
+  // 分割代入のデフォルト設定 keyがない時に=でデフォルトを代入できる
   const { つばき: tubaki, kobusi = '解散', beyo: beyonds = '解散'} = leaders; //定数名の変更とデフォルトの設定両方できる
   console.log( tubaki, kobusi, beyonds); // keyがある時はデフォルトを上書きする
 }

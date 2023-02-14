@@ -350,9 +350,7 @@ let numbers = [1, 2, 3, 4, 5];
 for (let index in numbers) {
   console.log(index, numbers[index]);
 }
-for (let value in numbers) {
-  console.log(value, numbers[value]);
-}
+
 
 // for...of
 for (let value of numbers) {
